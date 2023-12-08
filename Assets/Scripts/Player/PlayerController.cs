@@ -6,17 +6,28 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public static PlayerController Instance;
+
+    [SerializeField] int _maxHealth = 10;
+    int _currentHealth;
+
     [SerializeField] float _moveSpeed;
     [SerializeField] float _perfectDashSpeed, _goodDashSpeed;
     [SerializeField] float _dashDuration;
     [SerializeField] float _rotationSpeed;
+    float _damageDecreasePercent;
     bool _isDashing;
 
     Animator _animator;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _currentHealth = _maxHealth;
     }
 
     private void Update()
@@ -24,6 +35,20 @@ public class PlayerController : MonoBehaviour
         Move();
         DashCheck();
         LookAtMouse();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackTrigger"))
+        {
+            TakeDamage();
+        }
+    }
+
+    private void TakeDamage()
+    {
+        _animator.SetTrigger("Hit");
+        _currentHealth--;
     }
 
     void DashCheck()
@@ -125,6 +150,8 @@ public class PlayerController : MonoBehaviour
     {
         _isDashing = true;
 
+        CheckDashEffectOnStart();
+
         var dashSpeed = r == BeatResult.Perfect ? _perfectDashSpeed : _goodDashSpeed;
 
         Vector3 inputDir = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
@@ -146,6 +173,36 @@ public class PlayerController : MonoBehaviour
         }
 
         _isDashing = false;
+
+        CheckDashEffectOnEnd();
+    }
+
+    private void CheckDashEffectOnStart()
+    {
+        var allUpgrades = PlayerUpgradeManager.Instance.GetUpgrades();
+
+        foreach (var upgrade in allUpgrades)
+        {
+            if (upgrade._dashUpgrade._explosionPrefabOnStart != null)
+            {
+                Instantiate(upgrade._dashUpgrade._explosionPrefabOnStart, transform.position, Quaternion.identity);
+                return;
+            }
+        }
+    }
+
+    private void CheckDashEffectOnEnd()
+    {
+        var allUpgrades = PlayerUpgradeManager.Instance.GetUpgrades();
+
+        foreach (var upgrade in allUpgrades)
+        {
+            if (upgrade._dashUpgrade._explosionPrefabOnEnd != null)
+            {
+                Instantiate(upgrade._dashUpgrade._explosionPrefabOnEnd, transform.position, Quaternion.identity);
+                return;
+            }
+        }
     }
 
     bool CheckCollision(Vector3 movement)
@@ -162,4 +219,16 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    public void UpdateStats(float moveSpeedIncreasePercent, float damageDecreaseIncreasePercent , float perfectDashSpeedIncreasePercent, float goodDashSpeedIncreasePercent)
+    {
+        _moveSpeed *= (1 + moveSpeedIncreasePercent / 100f);
+
+        _perfectDashSpeed *= (1 + perfectDashSpeedIncreasePercent / 100f);
+
+        _goodDashSpeed *= (1 + goodDashSpeedIncreasePercent / 100f);
+
+        _damageDecreasePercent *= (1 + damageDecreaseIncreasePercent / 100f);
+    }
+
 }

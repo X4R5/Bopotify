@@ -12,6 +12,8 @@ public class BeatManager : MonoBehaviour
     float _nextBeatTime;
     float _lastBeatTime;
 
+    [SerializeField] GameObject _rhythmCanvas;
+
     [SerializeField] TMP_Text _perfectText, _goodText, _missText;
 
     public Image[] _nextBeatProgressImages;
@@ -118,4 +120,29 @@ public class BeatManager : MonoBehaviour
         _goodText.gameObject.SetActive(false);
         _missText.gameObject.SetActive(false);
     }
+
+    public void ShowCanvas()
+    {
+        _rhythmCanvas.SetActive(true);
+    }
+
+    public void HideCanvas()
+    {
+        _rhythmCanvas.SetActive(false);
+    }
+
+    public void PauseMusic()
+    {
+        _audioSource.Pause();
+    }
+    public void PlayMusic()
+    {
+        _audioSource.Play();
+    }
+
+    public float GetNextBeatTime()
+    {
+        return _nextBeatTime;
+    }
+
 }

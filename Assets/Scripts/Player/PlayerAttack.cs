@@ -2,12 +2,19 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public static PlayerAttack Instance;
+
     [SerializeField] float _perfectAttackDmg, _goodAttackDmg;
     [SerializeField] float _perfectAttackRange, _goodAttackRange;
     [SerializeField] GameObject _perfectBulletPrefab, _goodBulletPrefab;
 
     [SerializeField] Transform _firePoint;
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Update()
     {
         AttackCheck();
@@ -59,4 +66,16 @@ public class PlayerAttack : MonoBehaviour
                 break;
         }
     }
+
+    public void UpdateAttackValues(float perfectAttackIncreasePercent, float goodAttackIncreasePercent, float perfectAttackRangeIncreasePercent, float goodAttackRangeIncreasePercent)
+    {
+        _perfectAttackDmg *= (1 + perfectAttackIncreasePercent / 100f);
+
+        _goodAttackDmg *= (1 + goodAttackIncreasePercent / 100f);
+
+        _perfectAttackRange *= (1 + perfectAttackRangeIncreasePercent / 100f);
+
+        _goodAttackRange *= (1 + goodAttackRangeIncreasePercent / 100f);
+    }
+
 }

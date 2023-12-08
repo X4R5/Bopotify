@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1733574660383832118
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04397263
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.6099997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.0956283
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.089937925
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9959474
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -190.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_Name
+      value: RobotBlue Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2106145266610383287, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c227571d7cd5b944914a22b1c7b82b2, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6858066539325200036}
+  m_SourcePrefab: {fileID: 100100000, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+--- !u!1 &1499572395751949671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b57e819060a6d1c4d862635e2bb2a0bb, type: 3}
+  m_PrefabInstance: {fileID: 1733574660383832118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6858066539325200036
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499572395751949671}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c68285e70360074096f96a80b9e6e27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

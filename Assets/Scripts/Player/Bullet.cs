@@ -30,4 +30,9 @@ public class Bullet : MonoBehaviour
         _dir = dir.normalized;
         _traveledDistance = 0f;
     }
+
+    public float GetDamage()
+    {
+        return _dmg;
+    }
 }

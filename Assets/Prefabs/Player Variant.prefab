@@ -495,6 +495,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96fb0b862c8643a4e86907a05451bda6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1070774289116583180}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96fb0b862c8643a4e86907a05451bda6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7002648473784099432}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96fb0b862c8643a4e86907a05451bda6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4995295543597831916}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96fb0b862c8643a4e86907a05451bda6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1421359308153454259}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96fb0b862c8643a4e86907a05451bda6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6239171431047170542}
   m_SourcePrefab: {fileID: 100100000, guid: 96fb0b862c8643a4e86907a05451bda6, type: 3}
 --- !u!1 &261402502829389719 stripped
 GameObject:
@@ -534,14 +546,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5f13dde3c396e45a9d9e4736a1f7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _moveSpeed: 3
   _perfectDashSpeed: 30
   _goodDashSpeed: 20
   _dashDuration: 0.1
-  _rotationSpeed: 0
-  _perfectText: {fileID: 0}
-  _goodText: {fileID: 0}
-  _missText: {fileID: 0}
+  _rotationSpeed: 10
+--- !u!114 &7002648473784099432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261402502829389719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f087b2ec6086879489bca09960a8ea3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _perfectAttackDmg: 15
+  _goodAttackDmg: 10
+  _perfectAttackRange: 0.6
+  _goodAttackRange: 0.4
+  _perfectBulletPrefab: {fileID: 968814268966231918, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
+  _goodBulletPrefab: {fileID: 5625547292665729409, guid: aead18674a25d174890782c705e5bf7e, type: 3}
+  _firePoint: {fileID: 1119566722956938255}
+--- !u!114 &4995295543597831916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261402502829389719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3529629d2a4c7e946b0cf0cb730d564c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neededXpForNextLevel: 5
+--- !u!65 &1421359308153454259
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261402502829389719}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.72322506, y: 1.5216641, z: 1.1576182}
+  m_Center: {x: 1.2209472e-16, y: 0.78257084, z: 0.2585916}
+--- !u!54 &6239171431047170542
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261402502829389719}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!4 &7623804945606501547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1824824446595371411, guid: 96fb0b862c8643a4e86907a05451bda6, type: 3}
