@@ -7,6 +7,8 @@ TagManager:
   - Obstacle
   - Bullet
   - AttackTrigger
+  - RobotBullet
+  - DashInstantDmg
   layers:
   - Default
   - TransparentFX

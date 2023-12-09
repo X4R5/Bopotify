@@ -51,6 +51,8 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             foreach (var addedupgrade in _addedUpgrades)
             {
+                if (addedupgrade == upgrade) continue;
+
                 addedupgrade._dashUpgrade._explosionPrefabOnEnd = null;
             }
         }
@@ -59,6 +61,8 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             foreach (var addedupgrade in _addedUpgrades)
             {
+                if (addedupgrade == upgrade) continue;
+
                 addedupgrade._dashUpgrade._explosionPrefabOnStart = null;
             }
         }

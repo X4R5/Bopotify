@@ -145,4 +145,9 @@ public class BeatManager : MonoBehaviour
         return _nextBeatTime;
     }
 
+    public float GetSecondsPerBeat()
+    {
+        return _secondsPerBeat;
+    }
+
 }

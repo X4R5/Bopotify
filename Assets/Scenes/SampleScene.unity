@@ -240,7 +240,7 @@ Transform:
   - {fileID: 1940388010}
   - {fileID: 1865090287}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &36956569
 GameObject:
@@ -471,7 +471,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &156240155
 AudioSource:
@@ -483,7 +483,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 162dd97efad0f3f47878650f9afe4258, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a8681240ac435044c8a52ec880d43f80, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 156240155}
-  _bpm: 100
+  _bpm: 120
   _rhythmCanvas: {fileID: 440126992}
   _perfectText: {fileID: 1426023892}
   _goodText: {fileID: 1454297098}
@@ -800,7 +800,7 @@ RectTransform:
   m_Children:
   - {fileID: 704310524}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1097,7 +1097,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &369043618 stripped
 GameObject:
@@ -1370,7 +1370,7 @@ RectTransform:
   - {fileID: 1454297097}
   - {fileID: 1327508812}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1650,7 +1650,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &512744556
 Animator:
@@ -2664,7 +2664,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &953111622
 MeshCollider:
@@ -2959,7 +2959,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014730261 stripped
 GameObject:
@@ -4354,7 +4354,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1661413385
 Animator:
@@ -4874,11 +4874,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 642713596676762925, guid: 2bad577be76a5784e9b07b86034f668b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 642713596676762925, guid: 2bad577be76a5784e9b07b86034f668b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.67
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 642713596676762925, guid: 2bad577be76a5784e9b07b86034f668b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4886,7 +4886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 642713596676762925, guid: 2bad577be76a5784e9b07b86034f668b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.78
+      value: -3.44
       objectReference: {fileID: 0}
     - target: {fileID: 642713596676762925, guid: 2bad577be76a5784e9b07b86034f668b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5588,7 +5588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3406368516080934993, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3406368516080934993, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5734,6 +5734,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -176.37408
       objectReference: {fileID: 0}
+    - target: {fileID: 7918498648097663701, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
+      propertyPath: _attackDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7935792920120288405, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -2.0251732
@@ -5790,9 +5794,82 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9183821922729793975, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4736982776618146374, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
+--- !u!1001 &8921226957994571327
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8773607
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.6100001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.089937925
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9959474
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895581914007257325, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929469461868128745, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: m_Name
+      value: RobotBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333914622568435825, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: _attackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333914622568435825, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}
+      propertyPath: _attackRadius
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b2af48387892024f8d04a4c0948f823, type: 3}

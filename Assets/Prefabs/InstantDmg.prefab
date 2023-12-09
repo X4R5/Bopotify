@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8801710709311146118}
   m_Layer: 0
   m_Name: InstantDmg
-  m_TagString: Untagged
+  m_TagString: DashInstantDmg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   _dashUpgrade:
-    _perfectDashDistanceIncreasePercent: 100
-    _goodDashDistanceIncreasePercent: 100
+    _perfectDashDistanceIncreasePercent: 0
+    _goodDashDistanceIncreasePercent: 0
     _explosionPrefabOnEnd: {fileID: 3991787364765638526, guid: 2589af5bc6f12994ca8dc96c2f76323b, type: 3}
-    _explosionPrefabOnEndDamage: 0
+    _explosionPrefabOnEndDamage: 5
     _explosionPrefabOnStart: {fileID: 3991787364765638526, guid: 2589af5bc6f12994ca8dc96c2f76323b, type: 3}
-    _explosionPrefabOnStartDamage: 0
+    _explosionPrefabOnStartDamage: 5
   _attackUpgrade:
     _perfectAttackIncreasePercent: 0
     _goodAttackIncreasePercent: 0
@@ -27,4 +27,5 @@ MonoBehaviour:
   _damageDecreasePercent: 0
   _damageDecrease: 0
   _moveSpeedInreasePercent: 0
-  _upgradeDescription: dash end start instant
+  _upgradeDescription: "dashin ba\u015F\u0131nda ve sonunda\nhasar velen bir\nalan
+    yarat\u0131l\u0131r"

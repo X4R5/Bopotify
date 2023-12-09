@@ -185,7 +185,8 @@ public class PlayerController : MonoBehaviour
         {
             if (upgrade._dashUpgrade._explosionPrefabOnStart != null)
             {
-                Instantiate(upgrade._dashUpgrade._explosionPrefabOnStart, transform.position, Quaternion.identity);
+                var upg = Instantiate(upgrade._dashUpgrade._explosionPrefabOnStart, transform.position, Quaternion.identity);
+                upg.GetComponent<DashUpgradeInstantDmg>().SetDamage(upgrade._dashUpgrade._explosionPrefabOnStartDamage);
                 return;
             }
         }
@@ -199,7 +200,8 @@ public class PlayerController : MonoBehaviour
         {
             if (upgrade._dashUpgrade._explosionPrefabOnEnd != null)
             {
-                Instantiate(upgrade._dashUpgrade._explosionPrefabOnEnd, transform.position, Quaternion.identity);
+                var upg = Instantiate(upgrade._dashUpgrade._explosionPrefabOnEnd, transform.position, Quaternion.identity);
+                upg.GetComponent<DashUpgradeInstantDmg>().SetDamage(upgrade._dashUpgrade._explosionPrefabOnEndDamage);
                 return;
             }
         }

@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class RobotRed : MonoBehaviour
 {
     Transform _player;
 
@@ -15,12 +16,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float _attackDamage = 10f;
     [SerializeField] float _attackDelay = 1f;
 
+    [SerializeField] GameObject _attackTrigger;
 
     private NavMeshAgent _navMeshAgent;
     private Vector3 _randomDestination;
     private float _idleTimer;
     private float _lastAttackTime;
     Animator _animator;
+    
 
     private void Awake()
     {
@@ -34,10 +37,6 @@ public class EnemyAI : MonoBehaviour
         SetRandomDestination();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _animator.SetBool("Running", true);
-    }
-
-    protected virtual void Attack()
-    {
     }
 
     void Update()
@@ -83,6 +82,30 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+        StartCoroutine(AttackCoroutine());
+    }
+
+    IEnumerator AttackCoroutine()
+    {
+        var nextBeatTime = BeatManager.Instance.GetNextBeatTime();
+
+        yield return new WaitForSeconds(Time.time - nextBeatTime);
+
+        _animator.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(1f);
+
+        _attackTrigger.SetActive(true);
+
+        yield return new WaitForSeconds(0.05f);
+
+        _attackTrigger.SetActive(false);
+
+        yield return null;
+    }
+
     void SetRandomDestination()
     {
         Vector2 randomDirection = Random.insideUnitCircle * _walkRadius;
@@ -103,6 +126,13 @@ public class EnemyAI : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("DashInstantDmg"))
+        {
+            TakeDamage(other.GetComponent<DashUpgradeInstantDmg>().GetDamage());
+            PlayerUpgradeManager.Instance.AddXp(2);
+        }
+
     }
 
     private void TakeDamage(float damage)
