@@ -15,10 +15,10 @@ MonoBehaviour:
   _dashUpgrade:
     _perfectDashDistanceIncreasePercent: 0
     _goodDashDistanceIncreasePercent: 0
-    _explosionPrefabOnEnd: {fileID: 0}
-    _explosionPrefabOnEndDamage: 0
-    _explosionPrefabOnStart: {fileID: 3991787364765638526, guid: 2589af5bc6f12994ca8dc96c2f76323b, type: 3}
-    _explosionPrefabOnStartDamage: 5
+    _explosionPrefabOnEnd: {fileID: 3991787364765638526, guid: 2589af5bc6f12994ca8dc96c2f76323b, type: 3}
+    _explosionPrefabOnEndDamage: 5
+    _explosionPrefabOnStart: {fileID: 0}
+    _explosionPrefabOnStartDamage: 0
   _attackUpgrade:
     _perfectAttackIncreasePercent: 0
     _goodAttackIncreasePercent: 0
