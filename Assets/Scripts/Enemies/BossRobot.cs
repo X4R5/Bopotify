@@ -1,9 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossGolem : MonoBehaviour
+public class BossRobot : MonoBehaviour
 {
     Transform _player;
 
@@ -17,11 +17,9 @@ public class BossGolem : MonoBehaviour
     [SerializeField] float _attackDamage = 10f;
     [SerializeField] float _attackDelay = 1f;
 
-    [SerializeField] float _jumpAttackRadius = 3f;
     [SerializeField] float _punchRadius = 4f;
 
     [SerializeField] GameObject _punchTrigger;
-    [SerializeField] GameObject _jumpAttackTrigger;
 
     private NavMeshAgent _navMeshAgent;
     private Vector3 _randomDestination;
@@ -29,10 +27,6 @@ public class BossGolem : MonoBehaviour
     private float _lastAttackTime;
     Animator _animator;
     bool _isDied = false;
-
-
-
-    private float _valChangeDelay = 2f;
 
 
     private void Awake()
@@ -46,7 +40,7 @@ public class BossGolem : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         SetRandomDestination();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _animator.SetBool("Walking", true);
+        _animator.SetBool("Running", true);
     }
 
     void Update()
@@ -59,7 +53,7 @@ public class BossGolem : MonoBehaviour
 
         if (_navMeshAgent.isStopped)
         {
-            _animator.SetBool("Walking", false);
+            _animator.SetBool("Running", false);
             var lookPos = _player.transform.position;
             lookPos.y = transform.position.y;
             transform.LookAt(lookPos);
@@ -70,37 +64,19 @@ public class BossGolem : MonoBehaviour
         {
             if (Time.time - _lastAttackTime >= _attackDelay)
             {
-                var randomAttack = Random.Range(0f, 10f);
-                if (randomAttack < 5f)
-                {
-                    JumpAttack();
-                }
-                else
-                {
-                    Punch();
-                }
+                Punch();
             }
 
-                _navMeshAgent.SetDestination(transform.position);
+            _navMeshAgent.SetDestination(transform.position);
 
-            _animator.SetBool("Walking", false);
+            _animator.SetBool("Running", false);
             _idleTimer = 0f;
         }
         else if (Vector3.Distance(transform.position, _player.position) <= _detectionRadius)
         {
             _navMeshAgent.SetDestination(_player.position);
-            _animator.SetBool("Walking", true);
+            _animator.SetBool("Running", true);
             _idleTimer = 0f;
-
-            if (Vector3.Distance(transform.position, _player.position) <= _jumpAttackRadius && Time.time > _valChangeDelay)
-            {
-                var val = Random.Range(0, 10);
-                _valChangeDelay = Time.time + 2f;
-                if (val <= 2)
-                {
-                    JumpAttack();
-                }
-            }
         }
         else
         {
@@ -108,18 +84,18 @@ public class BossGolem : MonoBehaviour
             if (_navMeshAgent.remainingDistance < 0.2f)
             {
                 _idleTimer += Time.deltaTime;
-                _animator.SetBool("Walking", false);
+                _animator.SetBool("Running", false);
 
                 if (_idleTimer >= _idleTime)
                 {
                     SetRandomDestination();
-                    _animator.SetBool("Walking", true);
+                    _animator.SetBool("Running", true);
                     _idleTimer = 0f;
                 }
             }
             else
             {
-                _animator.SetBool("Walking", true);
+                _animator.SetBool("Running", true);
             }
         }
     }
@@ -134,9 +110,22 @@ public class BossGolem : MonoBehaviour
     IEnumerator PunchCoroutine()
     {
         _navMeshAgent.isStopped = true;
-        _animator.SetTrigger("Punch");
+        
+        var rand = Random.Range(0, 3);
+        if (rand == 0)
+        {
+            _animator.SetTrigger("Punch");
+        }
+        else if (rand == 1)
+        {
+            _animator.SetTrigger("Punch2");
+        }
+        else
+        {
+            _animator.SetTrigger("Kick");
+        }
 
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.1f);
         if (_isDied) yield break;
         _punchTrigger.SetActive(true);
 
@@ -146,31 +135,6 @@ public class BossGolem : MonoBehaviour
         yield return new WaitForSeconds(2.3f);
         _navMeshAgent.isStopped = false;
 
-    }
-
-    private void JumpAttack()
-    {
-        _attackDelay = 6f;
-        _lastAttackTime = Time.time;
-        StartCoroutine(JumpAttackCoroutine());
-    }
-
-    IEnumerator JumpAttackCoroutine()
-    {
-        _animator.SetTrigger("JumpAttack");
-
-        yield return new WaitForSeconds(1f);
-        _navMeshAgent.isStopped = true;
-
-        yield return new WaitForSeconds(0.6f);
-        if (_isDied) yield break;
-        _jumpAttackTrigger.SetActive(true);
-
-        yield return new WaitForSeconds(0.1f);
-        _jumpAttackTrigger.SetActive(false);
-
-        yield return new WaitForSeconds(3.3f);
-        _navMeshAgent.isStopped = false;
     }
 
     void SetRandomDestination()

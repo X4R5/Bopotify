@@ -1,27 +1,23 @@
-﻿using System.Collections;
+using System.Collections;
 using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossGolem : MonoBehaviour
+public class RobotBlack : MonoBehaviour
 {
     Transform _player;
 
-    [SerializeField] float _maxHealth = 300f;
+    [SerializeField] float _maxHealth = 30f;
     float _currentHealth;
 
     [SerializeField] float _detectionRadius = 10f;
-    [SerializeField] float _attackRadius = 4f;
+    [SerializeField] float _attackRadius = 1f;
     [SerializeField] float _idleTime = 5f;
     [SerializeField] float _walkRadius = 5f;
     [SerializeField] float _attackDamage = 10f;
     [SerializeField] float _attackDelay = 1f;
 
-    [SerializeField] float _jumpAttackRadius = 3f;
-    [SerializeField] float _punchRadius = 4f;
-
-    [SerializeField] GameObject _punchTrigger;
-    [SerializeField] GameObject _jumpAttackTrigger;
+    [SerializeField] GameObject _explosionTrigger;
 
     private NavMeshAgent _navMeshAgent;
     private Vector3 _randomDestination;
@@ -29,10 +25,6 @@ public class BossGolem : MonoBehaviour
     private float _lastAttackTime;
     Animator _animator;
     bool _isDied = false;
-
-
-
-    private float _valChangeDelay = 2f;
 
 
     private void Awake()
@@ -46,7 +38,7 @@ public class BossGolem : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         SetRandomDestination();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _animator.SetBool("Walking", true);
+        _animator.SetBool("Running", true);
     }
 
     void Update()
@@ -59,7 +51,7 @@ public class BossGolem : MonoBehaviour
 
         if (_navMeshAgent.isStopped)
         {
-            _animator.SetBool("Walking", false);
+            _animator.SetBool("Running", false);
             var lookPos = _player.transform.position;
             lookPos.y = transform.position.y;
             transform.LookAt(lookPos);
@@ -70,37 +62,19 @@ public class BossGolem : MonoBehaviour
         {
             if (Time.time - _lastAttackTime >= _attackDelay)
             {
-                var randomAttack = Random.Range(0f, 10f);
-                if (randomAttack < 5f)
-                {
-                    JumpAttack();
-                }
-                else
-                {
-                    Punch();
-                }
+                Die();
             }
 
-                _navMeshAgent.SetDestination(transform.position);
+            _navMeshAgent.SetDestination(transform.position);
 
-            _animator.SetBool("Walking", false);
+            _animator.SetBool("Running", false);
             _idleTimer = 0f;
         }
         else if (Vector3.Distance(transform.position, _player.position) <= _detectionRadius)
         {
             _navMeshAgent.SetDestination(_player.position);
-            _animator.SetBool("Walking", true);
+            _animator.SetBool("Running", true);
             _idleTimer = 0f;
-
-            if (Vector3.Distance(transform.position, _player.position) <= _jumpAttackRadius && Time.time > _valChangeDelay)
-            {
-                var val = Random.Range(0, 10);
-                _valChangeDelay = Time.time + 2f;
-                if (val <= 2)
-                {
-                    JumpAttack();
-                }
-            }
         }
         else
         {
@@ -108,69 +82,20 @@ public class BossGolem : MonoBehaviour
             if (_navMeshAgent.remainingDistance < 0.2f)
             {
                 _idleTimer += Time.deltaTime;
-                _animator.SetBool("Walking", false);
+                _animator.SetBool("Running", false);
 
                 if (_idleTimer >= _idleTime)
                 {
                     SetRandomDestination();
-                    _animator.SetBool("Walking", true);
+                    _animator.SetBool("Running", true);
                     _idleTimer = 0f;
                 }
             }
             else
             {
-                _animator.SetBool("Walking", true);
+                _animator.SetBool("Running", true);
             }
         }
-    }
-
-    private void Punch()
-    {
-        _attackDelay = 4f;
-        _lastAttackTime = Time.time;
-        StartCoroutine(PunchCoroutine());
-    }
-
-    IEnumerator PunchCoroutine()
-    {
-        _navMeshAgent.isStopped = true;
-        _animator.SetTrigger("Punch");
-
-        yield return new WaitForSeconds(1.3f);
-        if (_isDied) yield break;
-        _punchTrigger.SetActive(true);
-
-        yield return new WaitForSeconds(0.1f);
-        _punchTrigger.SetActive(false);
-
-        yield return new WaitForSeconds(2.3f);
-        _navMeshAgent.isStopped = false;
-
-    }
-
-    private void JumpAttack()
-    {
-        _attackDelay = 6f;
-        _lastAttackTime = Time.time;
-        StartCoroutine(JumpAttackCoroutine());
-    }
-
-    IEnumerator JumpAttackCoroutine()
-    {
-        _animator.SetTrigger("JumpAttack");
-
-        yield return new WaitForSeconds(1f);
-        _navMeshAgent.isStopped = true;
-
-        yield return new WaitForSeconds(0.6f);
-        if (_isDied) yield break;
-        _jumpAttackTrigger.SetActive(true);
-
-        yield return new WaitForSeconds(0.1f);
-        _jumpAttackTrigger.SetActive(false);
-
-        yield return new WaitForSeconds(3.3f);
-        _navMeshAgent.isStopped = false;
     }
 
     void SetRandomDestination()
@@ -210,14 +135,30 @@ public class BossGolem : MonoBehaviour
         Debug.Log("Current Health: " + _currentHealth);
         if (_currentHealth <= 0f)
         {
-            Die();
+            Die(true);
         }
     }
 
-    private void Die()
+    private void Die(bool giveXp = false)
     {
-        PlayerUpgradeManager.Instance.AddXp(10);
-        _animator.SetTrigger("Die");
         _isDied = true;
+        _animator.SetTrigger("Die");
+        StartCoroutine(DieCoroutine(giveXp));
+        
+    }
+
+    IEnumerator DieCoroutine(bool giveXp)
+    {
+        yield return new WaitForSeconds(1.4f);
+        Explosion();
+        yield return new WaitForSeconds(0.1f);
+        if(giveXp) PlayerUpgradeManager.Instance.AddXp(10);
+        Destroy(gameObject);
+    }
+
+    public void Explosion()
+    {
+        _explosionTrigger.SetActive(true);
+
     }
 }
