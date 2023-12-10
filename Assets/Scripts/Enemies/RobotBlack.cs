@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +17,7 @@ public class RobotBlack : MonoBehaviour
     [SerializeField] float _attackDelay = 1f;
 
     [SerializeField] GameObject _explosionTrigger;
+    [SerializeField] GameObject _explosionParticle;
 
     private NavMeshAgent _navMeshAgent;
     private Vector3 _randomDestination;
@@ -153,6 +153,8 @@ public class RobotBlack : MonoBehaviour
         Explosion();
         yield return new WaitForSeconds(0.1f);
         if(giveXp) PlayerUpgradeManager.Instance.AddXp(10);
+        LevelManager.Instance.EnemyKilled();
+        Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
         Destroy(gameObject);
     }
 

@@ -504,6 +504,7 @@ MonoBehaviour:
   _attackDamage: 10
   _attackDelay: 1
   _attackTrigger: {fileID: 8655056087758307134}
+  _explosionParticle: {fileID: 8614114460991330374, guid: 5a38aa56543b62b43bcf5914f93b4568, type: 3}
 --- !u!195 &9183821922729793975
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -541,12 +542,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.4226246, z: 1}
-  m_Center: {x: 0, y: 0.2113123, z: 0}
+  m_Size: {x: 1, y: 1.4720968, z: 0.73720455}
+  m_Center: {x: 0, y: 0.7222921, z: 0.04378462}
 --- !u!54 &8114461323778844509
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1139,5 +1140,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.0606334, z: 1}
-  m_Center: {x: 0, y: 0.5182079, z: 0}
+  m_Size: {x: 1, y: 1.0606334, z: 1.4413452}
+  m_Center: {x: 0, y: 0.5182079, z: 0.2206726}

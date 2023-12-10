@@ -527,7 +527,7 @@ Transform:
   m_Children:
   - {fileID: 8830171216612293400}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1727654716907684960
 NavMeshAgent:
@@ -572,6 +572,7 @@ MonoBehaviour:
   _attackDelay: 1
   _firePoint: {fileID: 8527277371937847679}
   _bulletPrefab: {fileID: 2296470795693957588, guid: ac086be677956664d825f0a9d82450b4, type: 3}
+  _explosionParticle: {fileID: 8614114460991330374, guid: d8d810c7238b10a4d971279d04ea620e, type: 3}
 --- !u!65 &6420496326738921896
 BoxCollider:
   m_ObjectHideFlags: 0

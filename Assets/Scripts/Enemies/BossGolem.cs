@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +21,9 @@ public class BossGolem : MonoBehaviour
 
     [SerializeField] GameObject _punchTrigger;
     [SerializeField] GameObject _jumpAttackTrigger;
+
+    [SerializeField] GameObject _explosionParticle;
+
 
     private NavMeshAgent _navMeshAgent;
     private Vector3 _randomDestination;
@@ -218,6 +220,8 @@ public class BossGolem : MonoBehaviour
     {
         PlayerUpgradeManager.Instance.AddXp(10);
         _animator.SetTrigger("Die");
+        LevelManager.Instance.EnemyKilled();
+        Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
         _isDied = true;
     }
 }

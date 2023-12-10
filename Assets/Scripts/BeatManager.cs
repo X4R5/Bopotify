@@ -48,7 +48,6 @@ public class BeatManager : MonoBehaviour
             foreach (Image image in _nextBeatProgressImages)
             {
                 image.fillAmount = 1;
-                image.fillAmount = 0;
             }
         }
 
@@ -76,8 +75,8 @@ public class BeatManager : MonoBehaviour
         float timeSinceLastBeat = currentTime - _lastBeatTime;
         float timeUntilNextBeat = _nextBeatTime - currentTime;
 
-        float perfectWindow = 0.07f;
-        float goodWindow = 0.12f;
+        float perfectWindow = 0.08f;
+        float goodWindow = 0.17f;
 
         HideText();
         

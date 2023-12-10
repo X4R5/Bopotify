@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,6 +19,8 @@ public class BossRobot : MonoBehaviour
     [SerializeField] float _punchRadius = 4f;
 
     [SerializeField] GameObject _punchTrigger;
+
+    [SerializeField] GameObject _explosionParticle;
 
     private NavMeshAgent _navMeshAgent;
     private Vector3 _randomDestination;
@@ -182,6 +183,8 @@ public class BossRobot : MonoBehaviour
     {
         PlayerUpgradeManager.Instance.AddXp(10);
         _animator.SetTrigger("Die");
+        LevelManager.Instance.EnemyKilled();
+        Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
         _isDied = true;
     }
 }

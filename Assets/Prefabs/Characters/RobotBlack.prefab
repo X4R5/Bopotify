@@ -141,7 +141,7 @@ Transform:
   - {fileID: 2435487543738617861}
   - {fileID: 2544680863355429045}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1136693556645498788
 MonoBehaviour:
@@ -163,6 +163,7 @@ MonoBehaviour:
   _attackDamage: 10
   _attackDelay: 1
   _explosionTrigger: {fileID: 4825364957711515251}
+  _explosionParticle: {fileID: 8614114460991330374, guid: d8d810c7238b10a4d971279d04ea620e, type: 3}
 --- !u!195 &8559008752937272966
 NavMeshAgent:
   m_ObjectHideFlags: 0

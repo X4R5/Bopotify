@@ -10,15 +10,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 968814268966231918, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
       propertyPath: m_Name
-      value: Bullet Variant
+      value: BulletGood
+      objectReference: {fileID: 0}
+    - target: {fileID: 2954539992905331438, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2954539992905331438, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2954539992905331438, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3650388326181211275, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aa32fc6607ebeaf4c857802fb35a36af, type: 2}
+    - target: {fileID: 3650388326181211275, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6766327302675597353, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6766327302675597353, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.0228
       objectReference: {fileID: 0}
     - target: {fileID: 6766327302675597353, guid: 9c2b6016eb148ec45ac11fb69d540c70, type: 3}
       propertyPath: m_LocalPosition.y

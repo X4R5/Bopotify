@@ -34,7 +34,7 @@ Transform:
   - {fileID: 3134048053165034968}
   - {fileID: 4276860898751800873}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3866050178340611465
 MonoBehaviour:
@@ -59,6 +59,7 @@ MonoBehaviour:
   _punchRadius: 4
   _punchTrigger: {fileID: 0}
   _jumpAttackTrigger: {fileID: 0}
+  _explosionParticle: {fileID: 8614114460991330374, guid: d8d810c7238b10a4d971279d04ea620e, type: 3}
 --- !u!195 &1896958008620533692
 NavMeshAgent:
   m_ObjectHideFlags: 0

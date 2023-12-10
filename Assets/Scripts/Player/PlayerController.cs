@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _perfectDashSpeed, _goodDashSpeed;
     [SerializeField] float _dashDuration;
     [SerializeField] float _rotationSpeed;
+    [SerializeField] GameObject _trail;
+
     float _damageDecreasePercent;
     bool _isDashing;
 
@@ -149,6 +151,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Dash(BeatResult r)
     {
         _isDashing = true;
+        _trail.SetActive(true);
 
         CheckDashEffectOnStart();
 
@@ -173,6 +176,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _isDashing = false;
+        _trail.SetActive(false);
 
         CheckDashEffectOnEnd();
     }

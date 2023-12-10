@@ -17,6 +17,8 @@ public class RobotRed : MonoBehaviour
     [SerializeField] float _attackDelay = 1f;
 
     [SerializeField] GameObject _attackTrigger;
+    [SerializeField] GameObject _explosionParticle;
+
 
     private NavMeshAgent _navMeshAgent;
     private Vector3 _randomDestination;
@@ -148,6 +150,8 @@ public class RobotRed : MonoBehaviour
     private void Die()
     {
         PlayerUpgradeManager.Instance.AddXp(10);
+        LevelManager.Instance.EnemyKilled();
+        Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
         Destroy(gameObject);
     }
 }

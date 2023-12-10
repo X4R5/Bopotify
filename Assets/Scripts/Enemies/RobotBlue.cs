@@ -19,6 +19,8 @@ public class RobotBlue : MonoBehaviour
     [SerializeField] Transform _firePoint;
     [SerializeField] GameObject _bulletPrefab;
 
+    [SerializeField] GameObject _explosionParticle;
+
     private NavMeshAgent _navMeshAgent;
     private Vector3 _randomDestination;
     private float _idleTimer;
@@ -166,6 +168,16 @@ public class RobotBlue : MonoBehaviour
     private void Die()
     {
         PlayerUpgradeManager.Instance.AddXp(10);
+        LevelManager.Instance.EnemyKilled();
+        StartCoroutine(DestroyThis());
+    }
+
+    IEnumerator DestroyThis()
+    {
+        Instantiate(_explosionParticle, transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(0.1f);
+
         Destroy(gameObject);
     }
 }
