@@ -14,6 +14,11 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        _perfectAttackDmg = PlayerPrefs.GetFloat("PerfectAttackDmg");
+        _goodAttackDmg = PlayerPrefs.GetFloat("GoodAttackDmg");
+        _perfectAttackRange = PlayerPrefs.GetFloat("PerfectAttackRange");
+        _goodAttackRange = PlayerPrefs.GetFloat("GoodAttackRange");
     }
     private void Update()
     {

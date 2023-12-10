@@ -27,4 +27,5 @@ MonoBehaviour:
   _damageDecreasePercent: 0
   _damageDecrease: 0
   _moveSpeedInreasePercent: 0
-  _upgradeDescription: "dashin ba\u015F\u0131nda\nhasar velen bir\nalan yarat\u0131l\u0131r"
+  _upgradeDescription: "Dash yetene\u011Finin ba\u015Flad\u0131\u011F\u0131 yerde
+    5 hasar veren bir alan olu\u015Fur."

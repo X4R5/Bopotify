@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthManager : MonoBehaviour
 {
@@ -12,9 +13,8 @@ public class PlayerHealthManager : MonoBehaviour
 
     Stack<GameObject> _heartObjects = new Stack<GameObject>();
 
-    [SerializeField] List<AnimationClip> _danceAnims = new List<AnimationClip>();
-
-    int _health;
+    int _currentHealth;
+    int _maxHealth;
 
     private void Awake()
     {
@@ -28,30 +28,30 @@ public class PlayerHealthManager : MonoBehaviour
             Destroy(this);
         }
 
-        var h = PlayerPrefs.GetInt("Health");
+        _currentHealth = PlayerPrefs.GetInt("CurrentHealth");
+        _maxHealth = PlayerPrefs.GetInt("MaxHealth");
 
-        if(h == 0)
+        for (int i = 0; i < _maxHealth; i++)
         {
-            PlayerPrefs.SetInt("Health", 6);
-            _health = 6;
-        }
-        else
-        {
-            _health = h;
-        }
-
-        for (int i = 0; i < _health; i++)
-        {
-            var newHeart = Instantiate(_heartPrefab, _holder);
-            _heartObjects.Push(newHeart);
+            var heart = Instantiate(_heartPrefab, _holder);
+            if(i + 1 > _currentHealth)
+            {
+                heart.transform.GetChild(0).gameObject.SetActive(true);
+                heart.transform.GetChild(1).gameObject.SetActive(false);
+            }
+            else
+            {
+                _heartObjects.Push(heart);
+            }
         }
     }
 
     public void TakeDamage()
     {
-        _health--;
+        _currentHealth--;
+        PlayerPrefs.SetInt("CurrentHealth", _currentHealth);
 
-        if(_health <= 0)
+        if(_currentHealth <= 0)
         {
             Debug.Log("Game Over");
             GameTracker.Instance.GameOver();
@@ -66,12 +66,6 @@ public class PlayerHealthManager : MonoBehaviour
 
     private void GameOver()
     {
-        var allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (var enemy in allEnemies)
-        {
-            _danceAnims.Shuffle();
-            //enemy.GetComponent<Animator>().Play(_danceAnims[0],0,0);
-        }
+        SceneManager.LoadScene("StartRunMenu");
     }
 }

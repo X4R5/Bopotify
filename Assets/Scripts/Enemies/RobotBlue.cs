@@ -46,7 +46,11 @@ public class RobotBlue : MonoBehaviour
 
     void Update()
     {
-        if (GameTracker.Instance.IsGameOver()) return;
+        if (GameTracker.Instance.IsGameOver())
+        {
+            _navMeshAgent.isStopped = true;
+            return;
+        }
 
         if (Vector3.Distance(transform.position, _player.position) <= _attackRadius && !_moveRandom)
         {
@@ -103,9 +107,9 @@ public class RobotBlue : MonoBehaviour
     {
         var nextBeatTime = BeatManager.Instance.GetNextBeatTime();
         var secondsPerBeat = 60 / BeatManager.Instance.GetBPM();
-        var fireDir = (_player.transform.position - transform.position).normalized;
+        var fireDir = (_player.transform.GetChild(0).position - transform.position).normalized;
 
-        var playerPos = _player.transform.position;
+        var playerPos = _player.transform.GetChild(0).position;
         playerPos.y = transform.position.y;
         transform.LookAt(playerPos);
 
@@ -172,10 +176,10 @@ public class RobotBlue : MonoBehaviour
 
     IEnumerator DestroyThis()
     {
-        Instantiate(_explosionParticle, transform.position, Quaternion.identity);
+        Instantiate(_explosionParticle, transform.position + new Vector3(0,1,0), Quaternion.identity);
 
         yield return new WaitForSeconds(0.1f);
-
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 1);
         Destroy(gameObject);
     }
 }

@@ -43,7 +43,11 @@ public class RobotBlack : MonoBehaviour
 
     void Update()
     {
-        if (GameTracker.Instance.IsGameOver()) return;
+        if (GameTracker.Instance.IsGameOver())
+        {
+            _navMeshAgent.isStopped = true;
+            return;
+        }
 
         if (_isDied)
         {
@@ -154,6 +158,7 @@ public class RobotBlack : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         LevelManager.Instance.EnemyKilled();
         Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 1);
         Destroy(gameObject);
     }
 

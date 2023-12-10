@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RoomsEasy/0.unity
+    path: Assets/Scenes/StartRunMenu.unity
+    guid: 1b0686ed5c333514995eabb155688100
+  - enabled: 1
+    path: Assets/Scenes/RoomsEasy/Run.unity
     guid: 68413256843a8214e80cd4e93bb8de7b
   - enabled: 1
     path: Assets/Scenes/RoomsEasy/1.unity

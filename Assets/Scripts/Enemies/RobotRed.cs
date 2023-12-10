@@ -43,7 +43,11 @@ public class RobotRed : MonoBehaviour
 
     void Update()
     {
-        if (GameTracker.Instance.IsGameOver()) return;
+        if (GameTracker.Instance.IsGameOver())
+        {
+            _navMeshAgent.isStopped = true;
+            return;
+        }
 
         if (_attacking)
         {
@@ -167,6 +171,7 @@ public class RobotRed : MonoBehaviour
     {
         LevelManager.Instance.EnemyKilled();
         Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 1);
         Destroy(gameObject);
     }
 }

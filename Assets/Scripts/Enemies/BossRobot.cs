@@ -46,7 +46,11 @@ public class BossRobot : MonoBehaviour
 
     void Update()
     {
-        if (GameTracker.Instance.IsGameOver()) return;
+        if (GameTracker.Instance.IsGameOver())
+        {
+            _navMeshAgent.isStopped = true;
+            return;
+        }
 
         if (_isDied)
         {
@@ -182,6 +186,7 @@ public class BossRobot : MonoBehaviour
     private void Die()
     {
         _animator.SetTrigger("Die");
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 3);
         LevelManager.Instance.EnemyKilled();
         GameTracker.Instance.EasyBossCompleted();
         Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);

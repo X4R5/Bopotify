@@ -17,6 +17,14 @@ public class PlayerUpgradeManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LevelUp();
+        }
+    }
+
     public void LevelUp()
     {
         UpgradeSelectionManager.Instance.ShowUpgrades();

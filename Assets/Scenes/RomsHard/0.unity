@@ -1227,6 +1227,14 @@ PrefabInstance:
       propertyPath: _totalEnemyCount
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1918912843067215548, guid: de29daa70ad7d334cab3eb896cf258a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 46.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918912843067215548, guid: de29daa70ad7d334cab3eb896cf258a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -148.55
+      objectReference: {fileID: 0}
     - target: {fileID: 4614870695139649999, guid: de29daa70ad7d334cab3eb896cf258a9, type: 3}
       propertyPath: m_NavMeshData
       value: 

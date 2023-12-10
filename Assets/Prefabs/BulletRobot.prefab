@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3885656006678673983, guid: ca3bfd6d4cd8cb241b218fb919efe45c, type: 3}
       propertyPath: m_TagString
-      value: RobotBullet
+      value: AttackTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 5373312052166475219, guid: ca3bfd6d4cd8cb241b218fb919efe45c, type: 3}
       propertyPath: m_Materials.Array.data[0]
