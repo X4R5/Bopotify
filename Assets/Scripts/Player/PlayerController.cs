@@ -8,9 +8,6 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController Instance;
 
-    [SerializeField] int _maxHealth = 10;
-    int _currentHealth;
-
     [SerializeField] float _moveSpeed;
     [SerializeField] float _perfectDashSpeed, _goodDashSpeed;
     [SerializeField] float _dashDuration;
@@ -29,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _currentHealth = _maxHealth;
     }
 
     private void Update()
@@ -50,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private void TakeDamage()
     {
         _animator.SetTrigger("Hit");
-        _currentHealth--;
+        PlayerHealthManager.Instance.TakeDamage();
     }
 
     void DashCheck()

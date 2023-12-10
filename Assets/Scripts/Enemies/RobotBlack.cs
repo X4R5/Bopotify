@@ -43,6 +43,8 @@ public class RobotBlack : MonoBehaviour
 
     void Update()
     {
+        if (GameTracker.Instance.IsGameOver()) return;
+
         if (_isDied)
         {
             _navMeshAgent.isStopped = true;
@@ -116,7 +118,6 @@ public class RobotBlack : MonoBehaviour
 
             TakeDamage(bulletDamage);
 
-            PlayerUpgradeManager.Instance.AddXp(2);
 
             Destroy(other.gameObject);
         }
@@ -124,7 +125,6 @@ public class RobotBlack : MonoBehaviour
         if (other.CompareTag("DashInstantDmg"))
         {
             TakeDamage(other.GetComponent<DashUpgradeInstantDmg>().GetDamage());
-            PlayerUpgradeManager.Instance.AddXp(2);
         }
 
     }
@@ -152,7 +152,6 @@ public class RobotBlack : MonoBehaviour
         yield return new WaitForSeconds(1.4f);
         Explosion();
         yield return new WaitForSeconds(0.1f);
-        if(giveXp) PlayerUpgradeManager.Instance.AddXp(10);
         LevelManager.Instance.EnemyKilled();
         Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
         Destroy(gameObject);

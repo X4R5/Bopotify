@@ -46,6 +46,8 @@ public class BossRobot : MonoBehaviour
 
     void Update()
     {
+        if (GameTracker.Instance.IsGameOver()) return;
+
         if (_isDied)
         {
             _navMeshAgent.isStopped = true;
@@ -156,7 +158,6 @@ public class BossRobot : MonoBehaviour
 
             TakeDamage(bulletDamage);
 
-            PlayerUpgradeManager.Instance.AddXp(2);
 
             Destroy(other.gameObject);
         }
@@ -164,7 +165,6 @@ public class BossRobot : MonoBehaviour
         if (other.CompareTag("DashInstantDmg"))
         {
             TakeDamage(other.GetComponent<DashUpgradeInstantDmg>().GetDamage());
-            PlayerUpgradeManager.Instance.AddXp(2);
         }
 
     }
@@ -181,9 +181,9 @@ public class BossRobot : MonoBehaviour
 
     private void Die()
     {
-        PlayerUpgradeManager.Instance.AddXp(10);
         _animator.SetTrigger("Die");
         LevelManager.Instance.EnemyKilled();
+        GameTracker.Instance.EasyBossCompleted();
         Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
         _isDied = true;
     }

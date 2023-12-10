@@ -9,6 +9,7 @@ TagManager:
   - AttackTrigger
   - RobotBullet
   - DashInstantDmg
+  - Enemy
   layers:
   - Default
   - TransparentFX

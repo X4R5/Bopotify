@@ -53,6 +53,8 @@ public class BossGolem : MonoBehaviour
 
     void Update()
     {
+        if (GameTracker.Instance.IsGameOver()) return;
+
         if (_isDied)
         {
             _navMeshAgent.isStopped = true;
@@ -193,15 +195,12 @@ public class BossGolem : MonoBehaviour
 
             TakeDamage(bulletDamage);
 
-            PlayerUpgradeManager.Instance.AddXp(2);
-
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("DashInstantDmg"))
         {
             TakeDamage(other.GetComponent<DashUpgradeInstantDmg>().GetDamage());
-            PlayerUpgradeManager.Instance.AddXp(2);
         }
 
     }
@@ -218,7 +217,6 @@ public class BossGolem : MonoBehaviour
 
     private void Die()
     {
-        PlayerUpgradeManager.Instance.AddXp(10);
         _animator.SetTrigger("Die");
         LevelManager.Instance.EnemyKilled();
         Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);

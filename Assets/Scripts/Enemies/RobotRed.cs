@@ -20,12 +20,12 @@ public class RobotRed : MonoBehaviour
     [SerializeField] GameObject _explosionParticle;
 
 
-    private NavMeshAgent _navMeshAgent;
-    private Vector3 _randomDestination;
+    NavMeshAgent _navMeshAgent;
+    Vector3 _randomDestination;
     private float _idleTimer;
-    private float _lastAttackTime;
+    float _lastAttackTime;
     Animator _animator;
-    
+    bool _attacking = false;
 
     private void Awake()
     {
@@ -43,10 +43,24 @@ public class RobotRed : MonoBehaviour
 
     void Update()
     {
+        if (GameTracker.Instance.IsGameOver()) return;
+
+        if (_attacking)
+        {
+            _navMeshAgent.isStopped = true;
+        }
+        else
+        {
+            _navMeshAgent.isStopped = false;
+        }
+
         if (Vector3.Distance(transform.position, _player.position) <= _attackRadius)
         {
             if (Time.time - _lastAttackTime >= _attackDelay)
             {
+                var lookPos = _player.transform.position;
+                lookPos.y = transform.position.y;
+                transform.LookAt(lookPos);
                 Attack();
                 _lastAttackTime = Time.time;
             }
@@ -56,7 +70,7 @@ public class RobotRed : MonoBehaviour
             _animator.SetBool("Running", false);
             _idleTimer = 0f;
         }
-        else if (Vector3.Distance(transform.position, _player.position) <= _detectionRadius)
+        else if (Vector3.Distance(transform.position, _player.position) <= _detectionRadius && !_navMeshAgent.isStopped)
         {
             _navMeshAgent.SetDestination(_player.position);
             _animator.SetBool("Running", true);
@@ -96,14 +110,19 @@ public class RobotRed : MonoBehaviour
         yield return new WaitForSeconds(Time.time - nextBeatTime);
 
         _animator.SetTrigger("Attack");
+        _attacking = true;
 
         yield return new WaitForSeconds(1f);
 
         _attackTrigger.SetActive(true);
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
 
         _attackTrigger.SetActive(false);
+
+        yield return new WaitForSeconds(1.7f);
+
+        _attacking = false;
 
         yield return null;
     }
@@ -124,15 +143,12 @@ public class RobotRed : MonoBehaviour
 
             TakeDamage(bulletDamage);
 
-            PlayerUpgradeManager.Instance.AddXp(2);
-
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("DashInstantDmg"))
         {
             TakeDamage(other.GetComponent<DashUpgradeInstantDmg>().GetDamage());
-            PlayerUpgradeManager.Instance.AddXp(2);
         }
 
     }
@@ -149,7 +165,6 @@ public class RobotRed : MonoBehaviour
 
     private void Die()
     {
-        PlayerUpgradeManager.Instance.AddXp(10);
         LevelManager.Instance.EnemyKilled();
         Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
         Destroy(gameObject);

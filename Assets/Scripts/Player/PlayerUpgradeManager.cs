@@ -7,10 +7,6 @@ public class PlayerUpgradeManager : MonoBehaviour
 {
     public static PlayerUpgradeManager Instance;
 
-    [SerializeField] float _neededXpForNextLevel;
-    float _currentXp;
-    int _currentLevel;
-
     List<UpgradeScriptableObject> _addedUpgrades = new List<UpgradeScriptableObject>();
 
     private void Awake()
@@ -21,36 +17,9 @@ public class PlayerUpgradeManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void LevelUp()
     {
-        _currentLevel = 1;
-        _currentXp = 0;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LevelUp();
-        }
-    }
-
-    public void AddXp(float xp)
-    {
-        _currentXp += xp;
-        if (_currentXp >= _neededXpForNextLevel)
-        {
-            LevelUp();
-        }
-    }
-
-    private void LevelUp()
-    {
-        _currentLevel++;
-        _neededXpForNextLevel += 50;
-        _currentXp = 0;
         UpgradeSelectionManager.Instance.ShowUpgrades();
-        Debug.Log("Level Up! " + _currentLevel);
     }
 
     public void AddUpgrade(UpgradeScriptableObject upgrade)

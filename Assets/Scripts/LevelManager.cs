@@ -29,7 +29,9 @@ public class LevelManager : MonoBehaviour
         if (_killedEnemyCount >= _totalEnemyCount)
         {
             _isGameOver = true;
-            Debug.Log("Game Over");
+            PlayerUpgradeManager.Instance.LevelUp();
+            GameTracker.Instance.RoomCompleted();
+            //GameTracker.Instance.LoadRandomScene();
         }
     }
 

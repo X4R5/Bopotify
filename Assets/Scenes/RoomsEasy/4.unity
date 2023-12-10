@@ -512,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7103733896403340152, guid: 949b1a80ada2f3b4d80a4f6aafec0cf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 44.89
+      value: 44.9
       objectReference: {fileID: 0}
     - target: {fileID: 7103733896403340152, guid: 949b1a80ada2f3b4d80a4f6aafec0cf2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1081,7 +1081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7103733896403340152, guid: 949b1a80ada2f3b4d80a4f6aafec0cf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 44.89
+      value: 44.9
       objectReference: {fileID: 0}
     - target: {fileID: 7103733896403340152, guid: 949b1a80ada2f3b4d80a4f6aafec0cf2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2063,7 +2063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7103733896403340152, guid: 949b1a80ada2f3b4d80a4f6aafec0cf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 44.89
+      value: 44.9
       objectReference: {fileID: 0}
     - target: {fileID: 7103733896403340152, guid: 949b1a80ada2f3b4d80a4f6aafec0cf2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2603,6 +2603,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1577982411372340532, guid: de29daa70ad7d334cab3eb896cf258a9, type: 3}
+      propertyPath: _totalEnemyCount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4614870695139649999, guid: de29daa70ad7d334cab3eb896cf258a9, type: 3}
       propertyPath: m_NavMeshData
       value: 

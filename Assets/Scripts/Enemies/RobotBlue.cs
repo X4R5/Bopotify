@@ -46,6 +46,8 @@ public class RobotBlue : MonoBehaviour
 
     void Update()
     {
+        if (GameTracker.Instance.IsGameOver()) return;
+
         if (Vector3.Distance(transform.position, _player.position) <= _attackRadius && !_moveRandom)
         {
             if (Time.time - _lastAttackTime >= _attackDelay)
@@ -143,15 +145,12 @@ public class RobotBlue : MonoBehaviour
 
             TakeDamage(bulletDamage);
 
-            PlayerUpgradeManager.Instance.AddXp(2);
-
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("DashInstantDmg"))
         {
             TakeDamage(other.GetComponent<DashUpgradeInstantDmg>().GetDamage());
-            PlayerUpgradeManager.Instance.AddXp(2);
         }
     }
 
@@ -167,7 +166,6 @@ public class RobotBlue : MonoBehaviour
 
     private void Die()
     {
-        PlayerUpgradeManager.Instance.AddXp(10);
         LevelManager.Instance.EnemyKilled();
         StartCoroutine(DestroyThis());
     }
