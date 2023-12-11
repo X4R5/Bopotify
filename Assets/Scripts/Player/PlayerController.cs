@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     bool _isDashing;
 
     Animator _animator;
+    AudioSource _audioSource;
+    [SerializeField] AudioClip _dashSoundClip;
 
     private void Awake()
     {
@@ -26,10 +28,13 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+
         Move();
         DashCheck();
         LookAtMouse();
@@ -148,6 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         _isDashing = true;
         _trail.SetActive(true);
+        _audioSource.PlayOneShot(_dashSoundClip);
 
         CheckDashEffectOnStart();
 
@@ -185,7 +191,8 @@ public class PlayerController : MonoBehaviour
         {
             if (upgrade._dashUpgrade._explosionPrefabOnStart != null)
             {
-                var upg = Instantiate(upgrade._dashUpgrade._explosionPrefabOnStart, transform.position, Quaternion.identity);
+                var upg = Instantiate(upgrade._dashUpgrade._explosionPrefabOnStart, transform.position + new Vector3(0,0.5f,0), upgrade._dashUpgrade._explosionPrefabOnStart.transform.rotation);
+                upg.transform.rotation = upgrade._dashUpgrade._explosionPrefabOnStart.transform.rotation;
                 upg.GetComponent<DashUpgradeInstantDmg>().SetDamage(upgrade._dashUpgrade._explosionPrefabOnStartDamage);
                 return;
             }
@@ -200,7 +207,8 @@ public class PlayerController : MonoBehaviour
         {
             if (upgrade._dashUpgrade._explosionPrefabOnEnd != null)
             {
-                var upg = Instantiate(upgrade._dashUpgrade._explosionPrefabOnEnd, transform.position, Quaternion.identity);
+                var upg = Instantiate(upgrade._dashUpgrade._explosionPrefabOnEnd, transform.position + new Vector3(0, 0.5f, 0), upgrade._dashUpgrade._explosionPrefabOnEnd.transform.rotation);
+                upg.transform.rotation = upgrade._dashUpgrade._explosionPrefabOnEnd.transform.rotation;
                 upg.GetComponent<DashUpgradeInstantDmg>().SetDamage(upgrade._dashUpgrade._explosionPrefabOnEndDamage);
                 return;
             }

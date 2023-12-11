@@ -35,14 +35,19 @@ public class RobotRed : MonoBehaviour
 
     void Start()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        SetRandomDestination();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+        
+        SetRandomDestination();
         _animator.SetBool("Running", true);
     }
 
     void Update()
     {
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+
         if (GameTracker.Instance.IsGameOver())
         {
             _navMeshAgent.isStopped = true;
@@ -116,7 +121,7 @@ public class RobotRed : MonoBehaviour
         _animator.SetTrigger("Attack");
         _attacking = true;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         _attackTrigger.SetActive(true);
 
@@ -124,7 +129,7 @@ public class RobotRed : MonoBehaviour
 
         _attackTrigger.SetActive(false);
 
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(0.5f);
 
         _attacking = false;
 
@@ -170,7 +175,9 @@ public class RobotRed : MonoBehaviour
     private void Die()
     {
         LevelManager.Instance.EnemyKilled();
-        Instantiate(_explosionParticle, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        var explosion = Instantiate(_explosionParticle, transform.position, _explosionParticle.transform.rotation);
+        Debug.Log(transform.position.y + " " + gameObject.name);
+        explosion.transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 1);
         Destroy(gameObject);
     }

@@ -8,8 +8,12 @@ public class GoToNextRoom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(LevelManager.Instance.IsGameOver())
+            if (LevelManager.Instance.IsGameOver())
+            {
                 GameTracker.Instance.LoadRandomScene();
+                BeatManager.Instance.StopMusic();
+            }
+                
         }
     }
 }

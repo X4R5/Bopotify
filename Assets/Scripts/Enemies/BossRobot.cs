@@ -39,13 +39,18 @@ public class BossRobot : MonoBehaviour
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        SetRandomDestination();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+
+        SetRandomDestination();
         _animator.SetBool("Running", true);
     }
 
     void Update()
     {
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+
         if (GameTracker.Instance.IsGameOver())
         {
             _navMeshAgent.isStopped = true;

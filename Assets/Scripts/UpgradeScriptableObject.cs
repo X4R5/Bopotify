@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewUpgrade", menuName = "Upgrade", order = 1)]
+[CreateAssetMenu(fileName = "NewUpgrade", menuName = "Upgrade", order = 2)]
 public class UpgradeScriptableObject : ScriptableObject
 {
     [System.Serializable]

@@ -8,7 +8,7 @@ public class DashUpgradeInstantDmg : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("DestroySelf", 0.1f);
+        Invoke("DestroySelf", 0.5f);
     }
 
     void DestroySelf()

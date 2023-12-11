@@ -67,5 +67,17 @@ public class PlayerHealthManager : MonoBehaviour
     private void GameOver()
     {
         SceneManager.LoadScene("StartRunMenu");
+        Destroy(GameTracker.Instance.gameObject);
+        Destroy(BeatManager.Instance.gameObject);
+    }
+
+    public void HideCanvas()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void ShowCanvas()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 }

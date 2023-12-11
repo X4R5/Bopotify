@@ -25,6 +25,11 @@ public class BeatManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
 
     }
@@ -32,13 +37,16 @@ public class BeatManager : MonoBehaviour
     private void Start()
     {
         _secondsPerBeat = 60f / _bpm;
-        _lastBeatTime = Time.time;
-        _nextBeatTime = Time.time + _secondsPerBeat;
+        //_lastBeatTime = Time.time;
+        //_nextBeatTime = Time.time + _secondsPerBeat;
         HideText();
+        HideCanvas();
     }
 
     private void Update()
     {
+        if (!_audioSource.isPlaying) return;
+
         float _currentTime = Time.time;
 
         if (_currentTime >= _nextBeatTime)
@@ -75,8 +83,8 @@ public class BeatManager : MonoBehaviour
         float timeSinceLastBeat = currentTime - _lastBeatTime;
         float timeUntilNextBeat = _nextBeatTime - currentTime;
 
-        float perfectWindow = 0.08f;
-        float goodWindow = 0.17f;
+        float perfectWindow = 0.1f;
+        float goodWindow = 0.19f;
 
         HideText();
         
@@ -123,11 +131,15 @@ public class BeatManager : MonoBehaviour
     public void ShowCanvas()
     {
         _rhythmCanvas.SetActive(true);
+        PlayMusic();
+        PlayerHealthManager.Instance.ShowCanvas();
     }
 
     public void HideCanvas()
     {
         _rhythmCanvas.SetActive(false);
+        PauseMusic();
+        PlayerHealthManager.Instance.HideCanvas();
     }
 
     public void PauseMusic()
@@ -139,6 +151,13 @@ public class BeatManager : MonoBehaviour
         _audioSource.Play();
     }
 
+    public void StopMusic()
+    {
+        _audioSource.Stop();
+        _lastBeatTime = 0;
+        _nextBeatTime = 0;
+    }
+
     public float GetNextBeatTime()
     {
         return _nextBeatTime;
@@ -147,6 +166,13 @@ public class BeatManager : MonoBehaviour
     public float GetSecondsPerBeat()
     {
         return _secondsPerBeat;
+    }
+
+    public void SetValues(float bpm, AudioClip song)
+    {
+        _bpm = bpm;
+        _secondsPerBeat = 60 / _bpm;
+        _audioSource.clip = song;
     }
 
 }

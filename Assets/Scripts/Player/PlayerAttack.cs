@@ -10,6 +10,9 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] Transform _firePoint;
 
+    AudioSource _audioSource;
+    [SerializeField] AudioClip _shootAudioClip;
+
 
     private void Awake()
     {
@@ -19,9 +22,13 @@ public class PlayerAttack : MonoBehaviour
         _goodAttackDmg = PlayerPrefs.GetFloat("GoodAttackDmg");
         _perfectAttackRange = PlayerPrefs.GetFloat("PerfectAttackRange");
         _goodAttackRange = PlayerPrefs.GetFloat("GoodAttackRange");
+
+        _audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+
         AttackCheck();
     }
 
@@ -70,6 +77,8 @@ public class PlayerAttack : MonoBehaviour
                 goodBullet.GetComponent<Bullet>().SetBullet(_goodAttackDmg, _goodAttackRange, dir);
                 break;
         }
+
+        _audioSource.PlayOneShot(_shootAudioClip);
     }
 
     public void UpdateAttackValues(float perfectAttackIncreasePercent, float goodAttackIncreasePercent, float perfectAttackRangeIncreasePercent, float goodAttackRangeIncreasePercent)

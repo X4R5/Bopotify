@@ -569,10 +569,11 @@ MonoBehaviour:
   _idleTime: 5
   _walkRadius: 5
   _attackDamage: 10
-  _attackDelay: 1
+  _attackDelay: 5
   _firePoint: {fileID: 8527277371937847679}
   _bulletPrefab: {fileID: 2296470795693957588, guid: ac086be677956664d825f0a9d82450b4, type: 3}
-  _explosionParticle: {fileID: 8614114460991330374, guid: d8d810c7238b10a4d971279d04ea620e, type: 3}
+  _explosionParticle: {fileID: 8614114460991330374, guid: 1a2f4c81e88bc3f48a92d5bc630f8134, type: 3}
+  _shootAudioClip: {fileID: 8300000, guid: c9c8c2252ed52664c96962b3e29199f6, type: 3}
 --- !u!65 &6420496326738921896
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -38,18 +39,19 @@ public class UpgradeSelectionManager : MonoBehaviour
 
     public void ShowCanvas()
     {
-        _canvas.SetActive(true);
         BeatManager.Instance.HideCanvas();
-        BeatManager.Instance.PauseMusic();
+        _canvas.SetActive(true);
+
         Time.timeScale = 0f;
     }
+
     public void HideCanvas()
     {
-        _canvas.SetActive(false);
         BeatManager.Instance.ShowCanvas();
-        BeatManager.Instance.PlayMusic();
+        _canvas.SetActive(false);
         Time.timeScale = 1f;
     }
+    
 
     void RandomUpgrades(int count)
     {

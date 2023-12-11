@@ -29,23 +29,31 @@ public class RobotBlue : MonoBehaviour
 
     bool _moveRandom = false;
 
+    AudioSource _audioSource;
+    [SerializeField] AudioClip _shootAudioClip;
 
     private void Awake()
     {
         _currentHealth = _maxHealth;
         _animator = GetComponentInChildren<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        SetRandomDestination();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+
+        SetRandomDestination();
         _animator.SetBool("Running", true);
     }
 
     void Update()
     {
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+
         if (GameTracker.Instance.IsGameOver())
         {
             _navMeshAgent.isStopped = true;
@@ -117,16 +125,19 @@ public class RobotBlue : MonoBehaviour
 
         var bullet1 = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
         bullet1.GetComponent<Bullet>().SetBullet(1, 15, fireDir);
+        _audioSource.PlayOneShot(_shootAudioClip);
 
         yield return new WaitForSeconds(secondsPerBeat);
 
         var bullet2 = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
         bullet2.GetComponent<Bullet>().SetBullet(1, 15, fireDir);
+        _audioSource.PlayOneShot(_shootAudioClip);
 
         yield return new WaitForSeconds(secondsPerBeat);
 
         var bullet3 = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
         bullet3.GetComponent<Bullet>().SetBullet(1, 15, fireDir);
+        _audioSource.PlayOneShot(_shootAudioClip);
 
         _moveRandom = true;
 
@@ -176,7 +187,9 @@ public class RobotBlue : MonoBehaviour
 
     IEnumerator DestroyThis()
     {
-        Instantiate(_explosionParticle, transform.position + new Vector3(0,1,0), Quaternion.identity);
+        var explosion = Instantiate(_explosionParticle, transform.position, _explosionParticle.transform.rotation);
+        Debug.Log(transform.position.y + " " + gameObject.name);
+        explosion.transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
 
         yield return new WaitForSeconds(0.1f);
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 1);

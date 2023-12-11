@@ -17,7 +17,6 @@ public class BossGolem : MonoBehaviour
     [SerializeField] float _attackDelay = 1f;
 
     [SerializeField] float _jumpAttackRadius = 3f;
-    [SerializeField] float _punchRadius = 4f;
 
     [SerializeField] GameObject _punchTrigger;
     [SerializeField] GameObject _jumpAttackTrigger;
@@ -45,14 +44,19 @@ public class BossGolem : MonoBehaviour
 
     void Start()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        SetRandomDestination();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+        
+        SetRandomDestination();
+        
         _animator.SetBool("Walking", true);
     }
 
     void Update()
     {
+        if (!LevelStartManager.Instance.IsGameStarted()) return;
+
         if (GameTracker.Instance.IsGameOver())
         {
             _navMeshAgent.isStopped = true;

@@ -539,7 +539,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2444487446748888545}
   - component: {fileID: 8527285884011266764}
-  - component: {fileID: 4349078275327187343}
   - component: {fileID: 3369740104383484563}
   m_Layer: 0
   m_Name: BeatManager
@@ -585,51 +584,6 @@ MonoBehaviour:
   _nextBeatProgressImages:
   - {fileID: 6319199039188047891}
   - {fileID: 515278016643675941}
---- !u!114 &4349078275327187343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6273160466890632938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 297f1267fb69bfc47b85351ed23c244e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _intervals:
-  - _steps: 1
-    _trigger:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Pulse, Assembly-CSharp
-          m_MethodName: PulseBeat
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - _steps: 2
-    _trigger:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Pulse, Assembly-CSharp
-          m_MethodName: PulseBeat
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!82 &3369740104383484563
 AudioSource:
   m_ObjectHideFlags: 0
@@ -641,7 +595,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a8681240ac435044c8a52ec880d43f80, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
