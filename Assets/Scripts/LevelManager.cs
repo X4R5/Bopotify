@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     int _killedEnemyCount = 0;
     bool _isGameOver = false;
 
+    [SerializeField] bool _isLastLevel = false;
+    [SerializeField] GameObject _gameOverPanel;
 
     private void Awake()
     {
@@ -28,6 +30,14 @@ public class LevelManager : MonoBehaviour
     {
         if (_killedEnemyCount >= _totalEnemyCount)
         {
+            if (_isLastLevel)
+            {
+                _gameOverPanel.SetActive(true);
+                Time.timeScale = 0;
+                BeatManager.Instance.HideCanvas();
+                return;
+            }
+
             _isGameOver = true;
             PlayerUpgradeManager.Instance.LevelUp();
             GameTracker.Instance.RoomCompleted();

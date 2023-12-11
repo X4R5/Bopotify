@@ -1667,7 +1667,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3406368516080934993, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3406368516080934993, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3413,7 +3413,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1130002908710378743, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1130002908710378743, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3461,19 +3461,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: _easyBossIndex
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
-      propertyPath: _hardBossIndex
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
+      propertyPath: _hardBossIndex
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: _easyRoomsEndIndex
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: _hardRoomsEndIndex
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: _easyRoomCountToPlay
@@ -3481,7 +3481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: _easyRoomsStartIndex
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: _hardRoomCountToPlay
@@ -3489,7 +3489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8403430108503048072, guid: 637dcfa1bdab3a1429c5f8b4545452ea, type: 3}
       propertyPath: _hardRoomsStartIndex
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3896,7 +3896,7 @@ Transform:
   - {fileID: 150059924}
   - {fileID: 732207648}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1240441645
 PrefabInstance:
@@ -4344,7 +4344,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1393717315
 MonoBehaviour:
@@ -4359,7 +4359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  bpm: 137
+  bpm: 135
 --- !u!1001 &1434686003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4604,7 +4604,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3406368516080934993, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3406368516080934993, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6349,7 +6349,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3406368516080934993, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3406368516080934993, guid: cb62fb6cfa27df549abc465cd9d246b1, type: 3}
       propertyPath: m_LocalPosition.x

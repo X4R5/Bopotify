@@ -52,6 +52,8 @@ public class GameTracker : MonoBehaviour
 
         _easyRoomIndexes.Shuffle();
         _hardRoomIndexes.Shuffle();
+
+        Time.timeScale = 1f;
     }
 
     public void LoadRandomScene()

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
+    public static PauseManager Instance;
+
     [SerializeField] GameObject _canvas;
     [SerializeField] Slider _masterVolumeSlider, _musicVolumeSlider;
 
@@ -21,6 +23,8 @@ public class PauseManager : MonoBehaviour
             PlayerPrefs.SetFloat("MusicVolume", 0.5f);
         }
 
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
         
     }
     private void Start()

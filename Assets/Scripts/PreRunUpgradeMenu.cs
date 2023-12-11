@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,17 +73,64 @@ public class PreRunUpgradeMenu : MonoBehaviour
     private void UpdateUI()
     {
         _moneyText.text = "Para: " + _moneyCount.ToString() + "G";
-        _maxHealthText.text = "Max can: " + PlayerPrefs.GetInt("MaxHealth").ToString();
-        _perfectAttackDmgText.text = "Perfect saldırı hasarı: " + PlayerPrefs.GetFloat("PerfectAttackDmg").ToString();
-        _goodAttackDmgText.text = "Good saldırı hasarı: " + PlayerPrefs.GetFloat("GoodAttackDmg").ToString();
-        _perfectAttackRangeText.text = "Perfect saldırı menzili: " + PlayerPrefs.GetFloat("PerfectAttackRange").ToString();
-        _goodAttackRangeText.text = "Good saldırı menzili: " + PlayerPrefs.GetFloat("GoodAttackRange").ToString();
+        if(PlayerPrefs.GetInt("MaxHealth") == 10)
+        {
+            _maxHealthText.text = "Max can: 10";
+            _maxHealthButton.GetComponentInChildren<TMP_Text>().text = "MAX";
+            _maxHealthButton.interactable = false;
+        }else
+        {
+            _maxHealthText.text = "Max can:" + PlayerPrefs.GetInt("MaxHealth");
+            _maxHealthButton.interactable = _moneyCount >= _maxHealthCost;
+        }
+        
+        if(PlayerPrefs.GetFloat("PerfectAttackDmg") >= 100)
+        {
+            _perfectAttackDmgText.text = "Perfect saldırı hasarı: 100";
+            _perfectAttackDmgButton.GetComponentInChildren<TMP_Text>().text = "MAX";
+            _perfectAttackDmgButton.interactable = false;
+        }else
+        {
+            _perfectAttackDmgText.text = "Perfect saldırı hasarı: " + PlayerPrefs.GetFloat("PerfectAttackDmg").ToString();
+            _perfectAttackDmgButton.interactable = _moneyCount >= _perfectAttackDmgCost;
+        }
 
-        _maxHealthButton.interactable = _moneyCount >= _maxHealthCost;
-        _perfectAttackDmgButton.interactable = _moneyCount >= _perfectAttackDmgCost;
-        _goodAttackDmgButton.interactable = _moneyCount >= _goodAttackDmgCost;
-        _perfectAttackRangeButton.interactable = _moneyCount >= _perfectAttackRangeCost;
-        _goodAttackRangeButton.interactable = _moneyCount >= _goodAttackRangeCost;
+        if (PlayerPrefs.GetFloat("GoodAttackDmg") >= 90)
+        {
+            _goodAttackDmgText.text = "Good saldırı hasarı: 90";
+            _goodAttackDmgButton.GetComponentInChildren<TMP_Text>().text = "MAX";
+            _goodAttackDmgButton.interactable = false;
+        }
+        else
+        {
+            _goodAttackDmgText.text = "Good saldırı hasarı: " + PlayerPrefs.GetFloat("GoodAttackDmg").ToString();
+            _goodAttackDmgButton.interactable = _moneyCount >= _goodAttackDmgCost;
+        }
+
+
+        if(PlayerPrefs.GetFloat("PerfectAttackRange") >= 1f)
+        {
+            _perfectAttackRangeText.text = "Perfect saldırı menzili: 1";
+            _perfectAttackRangeButton.GetComponentInChildren<TMP_Text>().text = "MAX";
+            _perfectAttackRangeButton.interactable = false;
+        }
+        else
+        {
+            _perfectAttackRangeText.text = "Perfect saldırı menzili: " + PlayerPrefs.GetFloat("PerfectAttackRange").ToString();
+            _perfectAttackRangeButton.interactable = _moneyCount >= _perfectAttackRangeCost;
+        }
+
+        
+        if(PlayerPrefs.GetFloat("GoodAttackRange") >= 0.9f)
+        {
+            _goodAttackRangeText.text = "Perfect saldırı menzili: 1";
+            _goodAttackRangeButton.GetComponentInChildren<TMP_Text>().text = "MAX";
+            _goodAttackRangeButton.interactable = false;
+        }else
+        {
+            _goodAttackRangeText.text = "Good saldırı menzili: " + PlayerPrefs.GetFloat("GoodAttackRange").ToString();
+            _goodAttackRangeButton.interactable = _moneyCount >= _goodAttackRangeCost;
+        }
     }
 
     void SetButtonClicks()
